@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AlertsRouteImport } from './routes/alerts'
+import { Route as EntryRouteImport } from './routes/entry'
+import { Route as FederatedRouteImport } from './routes/federated'
+import { Route as MethodsRouteImport } from './routes/methods'
+import { Route as RedistributionRouteImport } from './routes/redistribution'
+import { Route as PhcIdRouteImport } from './routes/phc.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AlertsRoute = AlertsRouteImport.update({
+  id: '/alerts',
+  path: '/alerts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntryRoute = EntryRouteImport.update({
+  id: '/entry',
+  path: '/entry',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FederatedRoute = FederatedRouteImport.update({
+  id: '/federated',
+  path: '/federated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MethodsRoute = MethodsRouteImport.update({
+  id: '/methods',
+  path: '/methods',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RedistributionRoute = RedistributionRouteImport.update({
+  id: '/redistribution',
+  path: '/redistribution',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PhcIdRoute = PhcIdRouteImport.update({
+  id: '/phc/$id',
+  path: '/phc/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/alerts': typeof AlertsRoute
+  '/entry': typeof EntryRoute
+  '/federated': typeof FederatedRoute
+  '/methods': typeof MethodsRoute
+  '/redistribution': typeof RedistributionRoute
+  '/phc/$id': typeof PhcIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/alerts': typeof AlertsRoute
+  '/entry': typeof EntryRoute
+  '/federated': typeof FederatedRoute
+  '/methods': typeof MethodsRoute
+  '/redistribution': typeof RedistributionRoute
+  '/phc/$id': typeof PhcIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/alerts': typeof AlertsRoute
+  '/entry': typeof EntryRoute
+  '/federated': typeof FederatedRoute
+  '/methods': typeof MethodsRoute
+  '/redistribution': typeof RedistributionRoute
+  '/phc/$id': typeof PhcIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/alerts'
+    | '/entry'
+    | '/federated'
+    | '/methods'
+    | '/redistribution'
+    | '/phc/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/alerts'
+    | '/entry'
+    | '/federated'
+    | '/methods'
+    | '/redistribution'
+    | '/phc/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/alerts'
+    | '/entry'
+    | '/federated'
+    | '/methods'
+    | '/redistribution'
+    | '/phc/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AlertsRoute: typeof AlertsRoute
+  EntryRoute: typeof EntryRoute
+  FederatedRoute: typeof FederatedRoute
+  MethodsRoute: typeof MethodsRoute
+  RedistributionRoute: typeof RedistributionRoute
+  PhcIdRoute: typeof PhcIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/alerts': {
+      id: '/alerts'
+      path: '/alerts'
+      fullPath: '/alerts'
+      preLoaderRoute: typeof AlertsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entry': {
+      id: '/entry'
+      path: '/entry'
+      fullPath: '/entry'
+      preLoaderRoute: typeof EntryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/federated': {
+      id: '/federated'
+      path: '/federated'
+      fullPath: '/federated'
+      preLoaderRoute: typeof FederatedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/methods': {
+      id: '/methods'
+      path: '/methods'
+      fullPath: '/methods'
+      preLoaderRoute: typeof MethodsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/redistribution': {
+      id: '/redistribution'
+      path: '/redistribution'
+      fullPath: '/redistribution'
+      preLoaderRoute: typeof RedistributionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/phc/$id': {
+      id: '/phc/$id'
+      path: '/phc/$id'
+      fullPath: '/phc/$id'
+      preLoaderRoute: typeof PhcIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AlertsRoute: AlertsRoute,
+  EntryRoute: EntryRoute,
+  FederatedRoute: FederatedRoute,
+  MethodsRoute: MethodsRoute,
+  RedistributionRoute: RedistributionRoute,
+  PhcIdRoute: PhcIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
