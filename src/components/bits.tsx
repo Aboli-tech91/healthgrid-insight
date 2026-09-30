@@ -12,7 +12,7 @@ export function Panel({ title, children, action, className = "" }: { title?: Rea
 }
 export function RiskBadge({ risk, label }: { risk: Risk; label?: string }) {
   const c = { red: "bg-risk-red/15 text-risk-red", amber: "bg-risk-amber/20 text-foreground", green: "bg-risk-green/15 text-risk-green" }[risk];
-  return <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium ${c}`}><span className={`h-1.5 w-1.5 rounded-full bg-risk-${risk}`} />{label ?? risk}</span>;
+  return <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium ${c}`}><span className={`h-1.5 w-1.5 rounded-full ${{ red: "bg-risk-red", amber: "bg-risk-amber", green: "bg-risk-green" }[risk]}`} />{label ?? risk}</span>;
 }
 export function ErrorBox({ msg, onRetry }: { msg: string; onRetry?: () => void }) {
   return (
